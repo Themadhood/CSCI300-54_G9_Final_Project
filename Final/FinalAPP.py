@@ -41,7 +41,7 @@ sets a or both lst to a new lst
         elif evenlst != None:
             self.stack_even = evenlst
 
-    def Selection(self,number:int):
+    def Selection(self,number:int): #Matthew M#
         #randomly select a movie from bolth stacks
         #add bolth to self.stack_temp
         #determin if number is odd or even

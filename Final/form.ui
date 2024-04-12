@@ -10,6 +10,7 @@
     <height>600</height>
    </rect>
   </property>
+
   <property name="font">
    <font>
     <bold>true</bold>
@@ -226,6 +227,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+
  </widget>
  <resources/>
  <connections/>

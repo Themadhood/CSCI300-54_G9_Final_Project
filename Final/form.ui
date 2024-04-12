@@ -10,9 +10,228 @@
     <height>600</height>
    </rect>
   </property>
+
+  <property name="font">
+   <font>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+</string>
+  </property>
+  <widget class="QPushButton" name="ok_button">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>500</y>
+     <width>130</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: blue;
+    color: white; /* Text color set to white for better contrast */
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkblue;
+    border-radius: 4px; /* Adjust the radius to your preference */
+    padding: 5px;
+    font-weight: bold;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit_button">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>40</y>
+     <width>80</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: red;
+    color: white; /* Setting text color to white for better readability */
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: beige;
+    font: bold 14px;
+    padding: 6px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="userNumLabel">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>470</y>
+     <width>260</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: white;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Enter a random number</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="userNum">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>500</y>
+     <width>130</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    color: white; /* Set text color */
+    /* Add other styling properties as needed */
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="movieNameLabel">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>550</y>
+     <width>400</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: white;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Movie name will appear here</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imageLabel_1">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>120</y>
+     <width>250</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/jupiter.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imageLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>275</x>
+     <y>75</y>
+     <width>250</width>
+     <height>375</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/adaline.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imageLabel_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>120</y>
+     <width>250</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/xmen.PNG);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>0</y>
+     <width>400</width>
+     <height>55</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: white;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Fantasy Movie Selector</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+
  </widget>
  <resources/>
  <connections/>

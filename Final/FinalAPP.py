@@ -78,10 +78,6 @@ sets a or both lst to a new lst
         #return selected movie
         pass
 
-    def UpdateLbl(self):
-        #update lable with a movie title
-        pass
-
 
 class CFantasyMovies:
     def __init__(self):

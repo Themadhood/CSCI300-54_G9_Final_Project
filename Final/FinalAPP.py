@@ -1,5 +1,5 @@
 # This Python file uses the following encoding: utf-8
-import sys
+import sys, io
 
 from PySide6.QtWidgets import QApplication, QWidget
 
@@ -45,11 +45,29 @@ class Widget(QWidget):
 
 
 class CReadFile:
+    def _Read(self):
+        retar = ""
+        with io.open('input.txt', 'r', encoding='utf-8') as movies:
+            retar = movies.read()
+            movies.close()
+        retar = retar.split("\n")
+        return retar
+
+    def _Split(self,movies:list):
+        for i in range(0,len(movies)):
+            if (i+1)%2 == 1:
+                self.stack_odd.append(movies[i])
+            else:
+                self.stack_even.append(movies[i])
+
     def GetLists(self):
-        #read input.txt file alow for speshal chars
-        #split read in to two stacks with first line =ing 1
-        #return the 2 stacks
-        pass
+        self.stack_odd = []
+        self.stack_even = []
+
+        movies = self._Read()
+        self._Split(movies)
+        
+        return self.stack_odd,self.stack_even
         
             
 class CRandom:

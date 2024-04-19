@@ -98,9 +98,10 @@ sets a or both lst to a new lst
 
 
 class CFantasyMovies:
-    def __init__(self):
-        #get textbox input
-        pass
+    def __init__(self,lbl):
+        self._lbl = lbl
+    def printMovie(self,txt):
+        self._lbl.setText(txt)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

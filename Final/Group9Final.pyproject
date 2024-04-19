@@ -1,6 +1,7 @@
 {
     "files": [
         "FinalAPP.py",
-        "form.ui"
+        "form.ui",
+        "main_resources.qrc"
     ]
 }

@@ -96,6 +96,114 @@ sets a or both lst to a new lst
         #return selected movie
         pass
 
+{
+    #ifndef FINALPROJECT_H
+#define FINALPROJECT_H
+
+#include <QMainWindow>
+
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class finalProject;
+}
+QT_END_NAMESPACE
+
+class finalProject : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    finalProject(QWidget *parent = nullptr);
+    ~finalProject();
+
+private slots:
+    void on_movieButton_clicked();
+
+private:
+    Ui::finalProject *ui;
+};
+#endif // FINALPROJECT_H
+                
+}
+
+{
+    #include "finalproject.h"
+#include "ui_finalproject.h"
+
+finalProject::finalProject(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::finalProject)
+{
+    ui->setupUi(this);
+}
+
+finalProject::~finalProject()
+{
+    delete ui;
+}
+
+
+
+QString movieName;
+
+#include <QStack>
+#include <QRandomGenerator>
+
+QStack<QString>  evenMovies;
+QStack<QString> oddMovies;
+QStack<QString> tempStack;
+
+
+void shuffleStack(QStack<QString> &stack) {
+    QList<QString> tempList;
+    while (!stack.isEmpty()) {
+        tempList.append(stack.pop());
+    }
+    std::shuffle(tempList.begin(), tempList.end(), std::default_random_engine(std::random_device{}()));
+    for (const QString &movie : tempList) {
+        stack.push(movie);
+    }
+}
+
+
+void finalProject::on_movieButton_clicked()
+{
+    // Initialize the stacks with movie names
+    evenMovies.push("Ice Age 5: Collision Course");
+    evenMovies.push("Forbidden Empire");
+    evenMovies.push("X-Men: Days of Future Past");
+    evenMovies.push("The Mortal Instruments: City of Bones");
+    evenMovies.push("Melancholia");
+
+    oddMovies.push("DC's Legends of Tomorrow");
+    oddMovies.push("Miss Peregrine's Home for Perculiar Children");
+    oddMovies.push("The Zero Theorem");
+    oddMovies.push("Jupiter Ascending");
+    oddMovies.push("The Age of Adaline");
+
+    shuffleStack(oddMovies);
+
+    shuffleStack(evenMovies);
+
+    tempStack.push(oddMovies.pop());
+    tempStack.push(evenMovies.pop());
+
+    if((ui->movieNumber->text().toInt()) % 2 == 0)
+    {
+        movieName = tempStack.pop();
+        oddMovies.push(tempStack.pop());
+    }
+    else
+    {
+        evenMovies.push(tempStack.pop());
+        movieName = tempStack.pop();
+    }
+
+    ui->movieResult->setText(movieName);
+
+}
+
+}
 
 class CFantasyMovies:
     def __init__(self,lbl):

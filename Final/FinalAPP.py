@@ -117,6 +117,73 @@ sets a or both lst to a new lst
         #delete the selected movie from its lst
         #return selected movie
         pass
+        {
+            from PyQt5.QtWidgets import QMainWindow, QApplication
+from ui_finalProject import Ui_finalProject
+import sys
+
+class finalProject(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_finalProject()
+        self.ui.setupUi(self)
+        
+        self.ui.movieButton.clicked.connect(self.on_movieButton_clicked)
+        
+    def on_movieButton_clicked(self):
+        pass
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = finalProject()
+    window.show()
+    sys.exit(app.exec_())
+
+
+}
+
+{
+    from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.uic import loadUi
+import random
+
+class finalProject(QMainWindow):
+    def __init__(self, parent=None):
+        super(finalProject, self).__init__(parent)
+        self.ui = loadUi("finalproject.ui", self)
+
+        self.even_movies = []
+        self.odd_movies = []
+        self.temp_stack = []
+
+    def __del__(self):
+        del self.ui
+
+    def shuffle_stack(self, stack):
+        temp_list = stack.copy()
+        random.shuffle(temp_list)
+        stack.clear()
+        stack.extend(temp_list)
+
+    def on_movieButton_clicked(self):
+        # Initialize the lists with movie names
+        self.even_movies = ["Ice Age 5: Collision Course", "Forbidden Empire", "X-Men: Days of Future Past", "The Mortal Instruments: City of Bones", "Melancholia"]
+        self.odd_movies = ["DC's Legends of Tomorrow", "Miss Peregrine's Home for Perculiar Children", "The Zero Theorem", "Jupiter Ascending", "The Age of Adaline"]
+
+        self.shuffle_stack(self.odd_movies)
+        self.shuffle_stack(self.even_movies)
+
+        self.temp_stack.append(self.odd_movies.pop())
+        self.temp_stack.append(self.even_movies.pop())
+
+        if int(self.ui.movieNumber.text()) % 2 == 0:
+            self.ui.movieResult.setText(self.temp_stack.pop())
+            self.odd_movies.append(self.temp_stack.pop())
+        else:
+            self.even_movies.append(self.temp_stack.pop())
+            self.ui.movieResult.setText(self.temp_stack.pop())
+
+}
 
 
 if __name__ == "__main__":

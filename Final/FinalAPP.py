@@ -1,8 +1,11 @@
 # This Python file uses the following encoding: utf-8
 import sys, io
 import rc_main_resources
-from PySide6.QtCore import Qt
+import random
+random.seed()
 
+
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QWidget
 
 # Important:
@@ -70,6 +73,8 @@ class Widget(QWidget):
         self.ClassReed = CReadFile()
         self.RandSelect = CRandom()
 
+        self.Read()
+
     def close_application(self):
          # This slot will be called when the button is clicked
         self.close()  # This will close the application window
@@ -78,13 +83,18 @@ class Widget(QWidget):
         # This method will be called every time the OK button is clicked
         # Insert the functionality you want here
         user_input = self.ui.userNum.text()  # Assuming userNum is your QLineEdit
+
         # You can now use the input to do something, like showing a movie name
         # For example, if you have a method that gets a movie name based on a number
         movie_name = self.get_movie_name_from_number(user_input)
         self.Print.printMovie(txt = movie_name)  # Assuming movieNameLabel is your QLabel
 
     def get_movie_name_from_number(self, number):
-       return self.RandSelect.Selection(number = number)
+        try:
+            number = int(number)
+            return self.RandSelect.Selection(number = number)
+        except:
+            return "please enter a number"
 
     def Read(self):
         odd,even = self.ClassReed.GetLists()
@@ -105,18 +115,36 @@ sets a or both lst to a new lst
 """
         if oddlst != None:
             self.stack_odd = oddlst
-        elif evenlst != None:
+        if evenlst != None:
             self.stack_even = evenlst
 
-    def Selection(self,number:int): #Matthew M#
-        #randomly select a movie from bolth stacks
-        #add bolth to self.stack_temp
-        #determin if number is odd or even
-        #take corisponding movie from self.stack_temp
-        #return remaing movie to its lst
-        #delete the selected movie from its lst
-        #return selected movie
-        pass
+    def _PickRandom(self):
+        if self.stack_odd > []:
+            odd = random.choice(self.stack_odd)
+            self.stack_temp.append(odd)
+            self.stack_odd.remove(odd)
+        if self.stack_even > []:
+            even = random.choice(self.stack_even)
+            self.stack_temp.append(even)
+            self.stack_even.remove(even)
+
+    def Selection(self,number:int):
+        self._PickRandom()
+
+        if len(self.stack_temp) > 1: #if mor than one movie in lst
+            if number%2 == 1: #odd number
+                retar = self.stack_temp.pop(0)
+                self.stack_even.append(self.stack_temp.pop())
+            else: #even
+                retar = self.stack_temp.pop()
+                self.stack_odd.append(self.stack_temp.pop())
+
+        elif len(self.stack_temp) == 1:
+            retar = self.stack_temp.pop()
+        else:
+            retar = "no other available films"
+
+        return retar
 
 
 if __name__ == "__main__":
